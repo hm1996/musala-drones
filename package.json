@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "start": "node server/server.js",
+    "build": "docker-compose down -v & docker-compose up -d & node server/utils/initialization.js"
   },
   "repository": {
     "type": "git",

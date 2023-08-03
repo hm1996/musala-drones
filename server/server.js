@@ -13,10 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(require('./routes/drones'));
-app.use(require('./routes/medications'));
+// TODO: Add medications routes here.
 
 const puerto = process.env.PORT || 3000;
 
 app.listen(puerto, () => {
     console.log(`Server started in the port ${puerto}`);
-})
+});

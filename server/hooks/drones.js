@@ -10,8 +10,19 @@ function preSave(next) {
             return sum + item.weight;
         }, 0);
 
+        let newCapacity = this.capacityLimit - weights;
+
+        if (newCapacity < 0) {
+            throw new Error(`Drone ${this.serial} can not be loaded because the capacity after loaded will be bellow 0 (${newCapacity})`);
+        }
+
+        if (this.capacity != newCapacity) {
+            this.set({ capacity: newCapacity});
+            this.markModified('capacity');
+        }
+    } else if (this.capacity == 0) {
+        this.set({ capacity: this.capacityLimit });
         this.markModified('capacity');
-        this.set({ capacity: this.capacity - weights});
     }
 
     next();

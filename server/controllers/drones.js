@@ -7,13 +7,56 @@ const read = async (req, res) => {
         let { serial } = req.params;
 
         const drone = await DronesModel.findOne({ serial: serial }).populate('medications');
-        const medications = await MedicationsModel.find({});
 
         if (_.isNull(drone)) {
             throw new Error(`Drone ${serial} does not exists`);
         }
 
         res.status(200).json(drone);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+const getLoad = async (req, res) => {
+    try {
+        let { serial } = req.params;
+
+        const drone = await DronesModel.findOne({ serial: serial }).populate('medications');
+
+        if (_.isNull(drone)) {
+            throw new Error(`Drone ${serial} does not exists`);
+        }
+
+        res.status(200).json({ medications: drone.medications });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+const getAvailables = async (req, res) => {
+    try {
+        const drones = await DronesModel.find({ state: 'IDLE', capacity: {
+            $gt: 0
+        }});
+
+        res.status(200).json({ drones });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+const getBattery = async (req, res) => {
+    try {
+        let { serial } = req.params;
+
+        const drone = await DronesModel.findOne({ serial });
+
+        if (_.isNull(drone)) {
+            throw new Error(`Drone ${serial} does not exists`);
+        }
+
+        res.status(200).json({ battery: drone.battery });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -41,9 +84,9 @@ const load = async (req, res) => {
     try {
         let { serial } = req.params;
 
-        const drone = await DronesModel.findOne({ serial: serial });
+        const drone = await DronesModel.findOne({ serial: serial }).populate('medications');
 
-        if (!drone) {
+        if (_.isNull(drone)) {
             throw new Error(`Drone ${serial} does not exists`);
         }
 
@@ -75,5 +118,8 @@ const load = async (req, res) => {
 module.exports = {
     create,
     read,
+    getLoad,
+    getAvailables,
+    getBattery,
     load
 };

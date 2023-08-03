@@ -17,6 +17,12 @@ const dronesSchema = new Schema({
         type: Number,
         min: 0,
         max: 500,
+        default: 0
+    },
+    capacityLimit: {
+        type: Number,
+        min: 0,
+        max: 500,
         required: true
     },
     battery: {
