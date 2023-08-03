@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/hm1996/musala-drones/issues"
   },
-  "homepage": "https://github.com/hm1996/musala-drones#readme"
+  "homepage": "https://github.com/hm1996/musala-drones#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^7.4.1"
+  }
 }
