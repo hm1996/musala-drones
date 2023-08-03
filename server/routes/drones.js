@@ -8,6 +8,6 @@ app.get('/drones/:serial/load', dronesController.getLoad);
 app.get('/drones/:serial/battery', dronesController.getBattery);
 app.get('/drones/state/availables', dronesController.getAvailables);
 app.post('/drones', dronesController.create);
-app.post('/drones/load/:serial', dronesController.load);
+app.post('/drones/:serial/load', dronesController.load);
 
 module.exports = app;

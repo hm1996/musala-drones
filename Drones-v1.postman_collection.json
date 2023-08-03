@@ -1,0 +1,1064 @@
+{
+	"info": {
+		"_postman_id": "ea277fa1-4904-48fc-929c-92141bebb0cb",
+		"name": "Drones-v1",
+		"description": "API documentation to control drones loads.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10239812"
+	},
+	"item": [
+		{
+			"name": "Drones",
+			"item": [
+				{
+					"name": "Register Drone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serial\": \"5\",\r\n    \"model\": \"Middleweight\",\r\n    \"capacityLimit\": 250,\r\n    \"battery\": 50,\r\n    \"state\": \"IDLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prot}}://{{url}}:{{port}}/drones",
+							"protocol": "{{prot}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"drones"
+							]
+						},
+						"description": "Register a new drone in the database."
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"serial\": \"5\",\r\n    \"model\": \"Middleweight\",\r\n    \"capacityLimit\": 250,\r\n    \"battery\": 50,\r\n    \"state\": \"IDLE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:3000/drones",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"drones"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "158"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9e-SQYY6EXZpv2GJShEEeUbDGQf860\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:31:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"serial\": \"5\",\n    \"model\": \"Middleweight\",\n    \"capacity\": 250,\n    \"capacityLimit\": 250,\n    \"battery\": 50,\n    \"state\": \"IDLE\",\n    \"medications\": [],\n    \"_id\": \"64cb2dbb7b2dc9795f5d6c98\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "Already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"serial\": \"5\",\r\n    \"model\": \"Middleweight\",\r\n    \"capacityLimit\": 600,\r\n    \"battery\": 50,\r\n    \"state\": \"IDLE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-8JbxcLsiD8ee4ZZ1KiMMCbo5+uA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:34:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drone 5 already exists\"\n}"
+						},
+						{
+							"name": "Non valid property",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"serial\": \"8\",\r\n    \"model\": \"Middleweight\",\r\n    \"capacityLimit\": 600,\r\n    \"battery\": 50,\r\n    \"state\": \"IDLE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "121"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"79-EDwK5ta5ISv/fHo2GB4kt9XIRA8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:35:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drones validation failed: capacityLimit: Path `capacityLimit` (600) is more than maximum allowed value (500).\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Load Drone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cp0-s\",\r\n    \"weight\": 30,\r\n    \"code\": \"NEW\",\r\n    \"image\": \"fasdfasdfdhdfgnvdbcxgsdghdfhgjdftrserawefsdafdxcvsdfg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/load/:serial",
+							"protocol": "{{prot}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"drones",
+								"load",
+								":serial"
+							],
+							"variable": [
+								{
+									"key": "serial",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Load medicaments to an existing drone."
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"cp0-s\",\r\n    \"weight\": 30,\r\n    \"code\": \"NEW\",\r\n    \"image\": \"fasdfasdfdhdfgnvdbcxgsdghdfhgjdftrserawefsdafdxcvsdfg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial",
+										"load"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"147-NIhbGdiVqQaDKwJWVoM49iH9VwA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:33:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"64cb2c1b03973f8cec35fa6a\",\n    \"serial\": \"3\",\n    \"model\": \"Cruiserweight\",\n    \"capacity\": 240,\n    \"capacityLimit\": 300,\n    \"battery\": 100,\n    \"state\": \"LOADED\",\n    \"medications\": [\n        {\n            \"_id\": \"64cb2e077b2dc9795f5d6ca6\",\n            \"name\": \"cp0-s\",\n            \"weight\": 30,\n            \"code\": \"NEW\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64cb2e20b7725c13c5cab0e6\",\n            \"name\": \"cp0-s\",\n            \"weight\": 30,\n            \"code\": \"NEW\",\n            \"__v\": 0\n        }\n    ],\n    \"__v\": 2\n}"
+						},
+						{
+							"name": "Out of capacity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"cp0-s\",\r\n    \"weight\": 1000,\r\n    \"code\": \"NEW\",\r\n    \"image\": \"fasdfasdfdhdfgnvdbcxgsdghdfhgjdftrserawefsdafdxcvsdfg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial",
+										"load"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-7OkLmj3nQcNW8+Ve4hBu6RLacEw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:36:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drone 3 can not be loaded because the capacity after loaded will be bellow 0 (-760)\"\n}"
+						},
+						{
+							"name": "Not exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"cp0-s\",\r\n    \"weight\": 1000,\r\n    \"code\": \"NEW\",\r\n    \"image\": \"fasdfasdfdhdfgnvdbcxgsdghdfhgjdftrserawefsdafdxcvsdfg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial",
+										"load"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-MDCJT4NQlkdCdyqwUULGb3uopes\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:36:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drone 7 does not exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Read Drone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial",
+							"protocol": "{{prot}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"drones",
+								":serial"
+							],
+							"variable": [
+								{
+									"key": "serial",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get all the information of a drone."
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:3000/drones/:serial",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"drones",
+										":serial"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "324"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"144-eyrjtfzn4hig25+qbTM6MxtICKw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:37:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"64cb2c1b03973f8cec35fa68\",\n    \"serial\": \"1\",\n    \"model\": \"Lightweight\",\n    \"capacity\": 0,\n    \"capacityLimit\": 100,\n    \"battery\": 100,\n    \"state\": \"LOADING\",\n    \"medications\": [\n        {\n            \"_id\": \"64cb2c20eae60b5fe98646a0\",\n            \"name\": \"cp0-s\",\n            \"weight\": 50,\n            \"code\": \"NEW\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64cb2c21eae60b5fe98646a8\",\n            \"name\": \"cp0-s\",\n            \"weight\": 50,\n            \"code\": \"NEW\",\n            \"__v\": 0\n        }\n    ],\n    \"__v\": 2\n}"
+						},
+						{
+							"name": "Not exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-+6MI/q52IBx865KTryf8HLp/LiU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:37:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drone 9 does not exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Load",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+							"protocol": "{{prot}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"drones",
+								":serial",
+								"load"
+							],
+							"variable": [
+								{
+									"key": "serial",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get the load of a drone."
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:3000/drones/:serial/load",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"drones",
+										":serial",
+										"load"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "183"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b7-JJT+yudo5Qf5msiccIn4eE8SDN8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:38:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"medications\": [\n        {\n            \"_id\": \"64cb2c20eae60b5fe98646a0\",\n            \"name\": \"cp0-s\",\n            \"weight\": 50,\n            \"code\": \"NEW\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64cb2c21eae60b5fe98646a8\",\n            \"name\": \"cp0-s\",\n            \"weight\": 50,\n            \"code\": \"NEW\",\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Not exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial",
+										"load"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-+6MI/q52IBx865KTryf8HLp/LiU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:38:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drone 9 does not exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Battery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+							"protocol": "{{prot}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"drones",
+								":serial",
+								"load"
+							],
+							"variable": [
+								{
+									"key": "serial",
+									"value": "1234567"
+								}
+							]
+						},
+						"description": "Get the battery of a drone."
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/battery",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial",
+										"battery"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f-AYMV122dbofsTZGiUsu32ZnxDJk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:39:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"battery\": 100\n}"
+						},
+						{
+							"name": "Not exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/battery",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										":serial",
+										"battery"
+									],
+									"variable": [
+										{
+											"key": "serial",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-+6MI/q52IBx865KTryf8HLp/LiU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:40:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Drone 9 does not exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Availables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/state/availables",
+							"protocol": "{{prot}}",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"drones",
+								"state",
+								"availables"
+							]
+						},
+						"description": "Get the list of drones availables."
+					},
+					"response": [
+						{
+							"name": "Ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/state/availables",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										"state",
+										"availables"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "329"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"149-ndQwwll69jBHu8lpiHsGIUWH/Qo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:40:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"drones\": [\n        {\n            \"_id\": \"64cb2c1b03973f8cec35fa6b\",\n            \"serial\": \"4\",\n            \"model\": \"Heavyweight\",\n            \"capacity\": 500,\n            \"capacityLimit\": 500,\n            \"battery\": 30,\n            \"state\": \"IDLE\",\n            \"medications\": [],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"64cb2dbb7b2dc9795f5d6c98\",\n            \"serial\": \"5\",\n            \"model\": \"Middleweight\",\n            \"capacity\": 250,\n            \"capacityLimit\": 250,\n            \"battery\": 50,\n            \"state\": \"IDLE\",\n            \"medications\": [],\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Empty",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{prot}}://{{url}}:{{port}}/drones/state/availables",
+									"protocol": "{{prot}}",
+									"host": [
+										"{{url}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"drones",
+										"state",
+										"availables"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d-OMhNgErBAX9/Ul61QOE6kdhcgLk\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 03 Aug 2023 04:41:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"drones\": []\n}"
+						}
+					]
+				}
+			],
+			"description": "Drones object endpoints"
+		}
+	]
+}

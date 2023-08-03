@@ -36,7 +36,8 @@ const getLoad = async (req, res) => {
 
 const getAvailables = async (req, res) => {
     try {
-        const drones = await DronesModel.find({ state: 'IDLE', capacity: {
+        // TODO: Define the real assumption here, only IDLE status or all drones with available capacity.
+        const drones = await DronesModel.find({ capacity: {
             $gt: 0
         }});
 
@@ -109,7 +110,7 @@ const load = async (req, res) => {
         await drone.save();
 
         const updatedDrone = await DronesModel.findById(drone._id).populate('medications');
-        res.status(201).json(updatedDrone);
+        res.status(200).json(updatedDrone);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

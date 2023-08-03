@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const monitoringTask = require('./tasks/monitoring');
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/task-manager', {
@@ -20,3 +21,5 @@ const puerto = process.env.PORT || 3000;
 app.listen(puerto, () => {
     console.log(`Server started in the port ${puerto}`);
 });
+
+monitoringTask.start();
