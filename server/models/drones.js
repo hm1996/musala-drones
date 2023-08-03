@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const { preSave } = require('../hooks/drones');
 
+// Drones Schema and Model.
 const dronesSchema = new Schema({
     serial: {
         type: String,

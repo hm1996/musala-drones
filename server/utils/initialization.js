@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const DronesModel = require('../models/drones');
-const MedicationsModel = require('../models/medications');
 
+// Data Dummy initialization for the project.
 mongoose.connect('mongodb://localhost:27017/task-manager', {
     useNewUrlParser: true,
     useUnifiedTopology: true,

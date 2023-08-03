@@ -1,5 +1,9 @@
 const _ = require('lodash');
 
+/**
+ * Hook to control all drones saving.
+ * @param {*} next
+ */
 function preSave(next) {
     if (this.state == 'LOADING' && this.battery < 25) {
         throw new Error(`Drone ${this.serial} can not be loaded because the battery is bellow 25% (${this.battery})`);

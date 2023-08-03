@@ -2,6 +2,11 @@ const _ = require('lodash');
 const DronesModel = require('../models/drones');
 const MedicationsModel = require('../models/medications');
 
+/**
+ * Method controller for reading a drone by a "serial" string.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const read = async (req, res) => {
     try {
         let { serial } = req.params;
@@ -18,6 +23,11 @@ const read = async (req, res) => {
     }
 };
 
+/**
+ * Method controller for reading a drone load by a "serial" string.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const getLoad = async (req, res) => {
     try {
         let { serial } = req.params;
@@ -34,6 +44,11 @@ const getLoad = async (req, res) => {
     }
 };
 
+/**
+ * Method controller for listing all availables drones.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const getAvailables = async (req, res) => {
     try {
         // TODO: Define the real assumption here, only IDLE status or all drones with available capacity.
@@ -47,6 +62,11 @@ const getAvailables = async (req, res) => {
     }
 };
 
+/**
+ * Method controller for listing all availables drones.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const getBattery = async (req, res) => {
     try {
         let { serial } = req.params;
@@ -63,6 +83,11 @@ const getBattery = async (req, res) => {
     }
 };
 
+/**
+ * Method controller for creating / register a drone.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const create = async (req, res) => {
     try {
         let { serial } = req.body;
@@ -81,6 +106,11 @@ const create = async (req, res) => {
     }
 };
 
+/**
+ * Method controller for load with medicaments a drone by a "serial" string.
+ * @param {*} req 
+ * @param {*} res 
+ */
 const load = async (req, res) => {
     try {
         let { serial } = req.params;

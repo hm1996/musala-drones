@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 
+// Medications Schema and Model.
 const medicationsSchema = new Schema({
     name: {
         type: String,

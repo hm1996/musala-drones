@@ -3,7 +3,10 @@ const { CronJob } = require('cron');
 const DronesModel = require('../models/drones');
 const AuditsModel = require('../models/audits');
 
+// Monitoring cronjob.
+// TODO: It's only monitoring the battery percentages of drones.
 module.exports = new CronJob('* * * * *', async () => {
+    // TODO: Use property exclusions to avoid retrieving all the docs data from database.
     let drones = await DronesModel.find({});
     for (let drone of drones) {
         let auditData = {};

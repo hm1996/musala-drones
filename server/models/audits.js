@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-const medicationsSchema = new Schema({
+// Audits Schema and Model.
+const auditsSchema = new Schema({
     level: {
         type: String,
         required: true,
@@ -22,4 +23,4 @@ const medicationsSchema = new Schema({
     }
 });
 
-module.exports = model('Audits', medicationsSchema);;
+module.exports = model('Audits', auditsSchema);;

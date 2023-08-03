@@ -241,7 +241,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{prot}}://{{url}}:{{port}}/drones/load/:serial",
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
 							"protocol": "{{prot}}",
 							"host": [
 								"{{url}}"
@@ -249,8 +249,8 @@
 							"port": "{{port}}",
 							"path": [
 								"drones",
-								"load",
-								":serial"
+								":serial",
+								"load"
 							],
 							"variable": [
 								{
@@ -779,7 +779,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/load",
+							"raw": "{{prot}}://{{url}}:{{port}}/drones/:serial/battery",
 							"protocol": "{{prot}}",
 							"host": [
 								"{{url}}"
@@ -788,12 +788,12 @@
 							"path": [
 								"drones",
 								":serial",
-								"load"
+								"battery"
 							],
 							"variable": [
 								{
 									"key": "serial",
-									"value": "1234567"
+									"value": "1"
 								}
 							]
 						},
