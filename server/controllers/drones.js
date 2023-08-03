@@ -2,6 +2,23 @@ const _ = require('lodash');
 const DronesModel = require('../models/drones');
 const MedicationsModel = require('../models/medications');
 
+const read = async (req, res) => {
+    try {
+        let { serial } = req.params;
+
+        const drone = await DronesModel.findOne({ serial: serial }).populate('medications');
+        const medications = await MedicationsModel.find({});
+
+        if (_.isNull(drone)) {
+            throw new Error(`Drone ${serial} does not exists`);
+        }
+
+        res.status(200).json(drone);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 const create = async (req, res) => {
     try {
         let { serial } = req.body;
@@ -24,19 +41,31 @@ const load = async (req, res) => {
     try {
         let { serial } = req.params;
 
-        const drone = await DronesModel.find({ serial: serial });
+        const drone = await DronesModel.findOne({ serial: serial });
 
         if (!drone) {
             throw new Error(`Drone ${serial} does not exists`);
         }
 
-        const newMedication = new MedicationsModel(req.body);
-        await newMedication.save();
+        if (drone.battery < 25) {
+            throw new Error(`Drone ${serial} can not be loaded because the battery is bellow 25% (${drone.battery})`);
+        }
 
-        drone.medications.push(newMedication);
+        drone.state = 'LOADING';
+        await drone.save();
 
-        const updatedDrone = await DronesModel.findOneAndUpdate({ serial }, drone);
+        const newMedications = await MedicationsModel.create(req.body);
+        
+        if (_.isArray(req.body)) {
+            drone.medications = _.isUndefined(drone.medications) ? newMedications : [...drone.medications, ...newMedications];
+        } else {
+            drone.medications = _.isUndefined(drone.medications) ? [ newMedications ] : [...drone.medications, newMedications];
+        }
 
+        drone.state = 'LOADED';
+        await drone.save();
+
+        const updatedDrone = await DronesModel.findById(drone._id).populate('medications');
         res.status(201).json(updatedDrone);
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -45,5 +74,6 @@ const load = async (req, res) => {
 
 module.exports = {
     create,
+    read,
     load
 };

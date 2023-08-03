@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { preSave } = require('../hooks/drones');
 
 const dronesSchema = new Schema({
     serial: {
@@ -31,8 +32,11 @@ const dronesSchema = new Schema({
     },
     medications: [{
         type: Schema.Types.ObjectId,
-        ref: 'Medications'
+        ref: 'Medications',
+        default: []
     }]
 });
+
+dronesSchema.pre('save', preSave);
 
 module.exports = model('Drones', dronesSchema);;
